@@ -2,17 +2,22 @@
 function Car(make, model) {
 	this.make = make
 	this.model = model
-	this.getMakeModel = ()=>{
-		return `${this.make} ${this.model}`
-	}
 }
+Car.prototype.getMakeModel = ()=>{
+	return `${this.make} ${this.model}`
+}
+
 
 function SportsCar(make, model, topSpeed) {
 	Car.call(this, make, model)
 	this.topSpeed = topSpeed
-	this.getTopSpeed = ()=>{
+}
+SportsCar.prototype = Object.create(Car.prototype)
+
+SportsCar.prototype.constructor = SportsCar
+
+SportsCar.prototype.getTopSpeed = ()=>{
 		return this.topSpeed
-	}
 }
 
 // Do not change the code below
